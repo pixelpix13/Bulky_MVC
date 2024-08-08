@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulkyWebApi", "BulkyWebApi\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiTest", "WebApiTest\WebApiTest.csproj", "{747DE8C1-FBEC-449B-98C3-54263DFD2FC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIConsole", "APIConsole\APIConsole.csproj", "{646A74EF-0BA9-4ED5-9814-8CBF8C07ACA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{747DE8C1-FBEC-449B-98C3-54263DFD2FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{747DE8C1-FBEC-449B-98C3-54263DFD2FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{747DE8C1-FBEC-449B-98C3-54263DFD2FC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{646A74EF-0BA9-4ED5-9814-8CBF8C07ACA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{646A74EF-0BA9-4ED5-9814-8CBF8C07ACA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{646A74EF-0BA9-4ED5-9814-8CBF8C07ACA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{646A74EF-0BA9-4ED5-9814-8CBF8C07ACA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
