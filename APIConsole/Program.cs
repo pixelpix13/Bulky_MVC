@@ -1,15 +1,17 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 class Program
 {
     // Hardcoded server address
-    private static readonly string ServerAddress = "https://localhost:7266/api/";
+    private static readonly string ServerAddress = "https://localhost:7266/api";
 
     static async Task Main(string[] args)
     {
-        
+        var apiService = new ApiService();
 
         while (true)
         {
@@ -33,7 +35,7 @@ class Program
                     if (!string.IsNullOrWhiteSpace(endpoint))
                     {
                         var result = await apiService.GetDataFromApi(ServerAddress, endpoint);
-                        Console.WriteLine($"API Response: {result}");
+                        Console.WriteLine($"{result}");
                     }
                     else
                     {
@@ -54,3 +56,44 @@ class Program
     }
 }
 
+public class ApiService
+{
+    private readonly HttpClient _httpClient;
+
+    public ApiService()
+    {
+        _httpClient = new HttpClient();
+    }
+
+    public async Task<JToken> GetDataFromApi(string baseUrl, string endpoint)
+    {
+        try
+        {
+            var response = await _httpClient.GetAsync($"{baseUrl}/{endpoint}");
+            response.EnsureSuccessStatusCode();
+            var content = await response.Content.ReadAsStringAsync();
+
+            // Determine if the response is a JSON object or array
+            if (content.Trim().StartsWith("["))
+            {
+                // Handle JSON array
+                return JArray.Parse(content);
+            }
+            else
+            {
+                // Handle JSON object
+                return JObject.Parse(content);
+            }
+        }
+        catch (HttpRequestException e)
+        {
+            Console.WriteLine($"Request error: {e.Message}");
+            return null;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"General error: {e.Message}");
+            return null;
+        }
+    }
+}
